@@ -2,11 +2,13 @@ version: '3'
 services:
   python:
     image: python:3.7
+    command: tail -F sleep infinity
     volumes:
       - sudvol:/data/tnsvol/
     networks:
       - sudnet
-    ports: -8081:8081 
+    ports: 
+      - "8081:8081"
   mongo:
     image: mongo:4.0.0
     volumes:
