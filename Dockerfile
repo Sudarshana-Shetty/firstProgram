@@ -1,7 +1,7 @@
     
- FROM python:3
+ FROM python:3.7
  ADD AllFunctions.py /sud/
- ADD UserDataCollections.py/sud/
+ ADD UserDataCollections_working.py /sud/
  RUN pip install pystrich
  RUN pip install pymongo
  EXPOSE 8081
