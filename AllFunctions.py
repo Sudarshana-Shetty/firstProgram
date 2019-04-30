@@ -13,10 +13,14 @@ class SubClass:
 
 # >>>>>> --- Checking for user if exists --- <<<<<<                    
     def findUser(self, uInput):
-        uCollections = self.db.UserCollections.find({'Name': uInput['Name']})
-        for uInput in uCollections:
-            print(uInput)
-            return 1 
+        count = self.db.UserCollections.count()
+        if (count == 0):
+            return 1
+        else:
+            uCollections = self.db.UserCollections.find({'Name': uInput['Name']})
+            for uInput in uCollections:
+                print(uInput)
+                return 1 
 
 # >>>>>> --- Display one user details --- <<<<<<
     def displayOneUser(self, uInput):
