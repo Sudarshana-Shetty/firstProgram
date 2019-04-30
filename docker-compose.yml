@@ -5,7 +5,7 @@ services:
     container_name: python3
     command: tail -F sleep infinity
     volumes:
-      - sudvol:/data/tnsvol/
+      - pyvol:/data/tnsvol/
     networks:
       - sudnet
     ports: 
@@ -14,13 +14,15 @@ services:
     image: mongo:4.0.0
     container_name: mongo4
     volumes:
-      - sudvol:/data/tnsvol/
+      - mongovol:/data/tnsvol/
     networks:
       - sudnet
     ports: 
       - "27017:27017"
 volumes:
-  sudvol:
+  pyvol:
+    external: true
+  mongovol:
     external: true
 networks:
   sudnet:
