@@ -1,7 +1,7 @@
 version: '3'
 services:
   python:
-    image: python:3.7
+    image: py3
     container_name: python3
     command: tail -F sleep infinity
     volumes:
