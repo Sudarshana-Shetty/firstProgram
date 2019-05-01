@@ -1,6 +1,7 @@
+import pymongo
 from pymongo import MongoClient
 from AllFunctions import SubClass
-client = pymongo.MongoClient('mongodb://python3:27017/')
+client = pymongo.MongoClient('mongodb://mongo4:27017/')
 db = client['UserDataDB'] # Creating new Data base 
 subobj = SubClass(db)
           
