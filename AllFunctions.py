@@ -15,7 +15,7 @@ class SubClass:
     def findUser(self, uInput):
         count = self.db.UserCollections.count()
         if (count == 0):
-            return 1
+            return 0
         else:
             uCollections = self.db.UserCollections.find({'Name': uInput['Name']})
             for uInput in uCollections:
