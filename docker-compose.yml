@@ -8,8 +8,6 @@ services:
       - pyvol:/data/Programs/
     networks:
       - sudnet
-    ports: 
-      - "8081:8081"
   mongo:
     image: mongo:4.0.0
     container_name: mongo4
