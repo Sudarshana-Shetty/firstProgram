@@ -7,18 +7,33 @@ def countUsedEIP(): #Counts and returns number of used EIPs in specified account
     count = 0
     for eip_dict in addresses_dict['Addresses']:
         count+= 1
-        # print(eip_dict['PublicIp'])
+        # print('----',eip_dict['PublicIp'])
     return count
 
 def maxAvailableEIP(): #returns maximum number of EIPs available in AWS account
-    response = client.describe_account_attributes(
-    AttributeNames=[
+    try:
+        responseClassic = client.describe_account_attributes(
+        AttributeNames=[
+        'max-elastic-ips',
+        ],)
+        for i in responseClassic['AccountAttributes']:
+            for j in i['AttributeValues']:
+                maxClasssic = j['AttributeValue']
+
+        responseVPC = client.describe_account_attributes(
+        AttributeNames=[
         'vpc-max-elastic-ips',
-    ],)
-    for i in response['AccountAttributes']:
-       for j in i['AttributeValues']:
-           maxEip = j['AttributeValue']
-    return maxEip
+        ],)
+        for i in responseVPC['AccountAttributes']:
+            for j in i['AttributeValues']:
+                maxVPC = j['AttributeValue']
+        
+        maxEIPs = int(maxClasssic) + int(maxVPC)
+    except:
+        print('Unable to find EIPs for the account')
+        return False
+    else:
+        return maxEIPs
 
 used = countUsedEIP()
 maximum = maxAvailableEIP()
