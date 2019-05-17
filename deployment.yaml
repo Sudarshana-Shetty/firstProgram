@@ -1,24 +1,19 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
-metadata: 
-  labels: 
-    app: sudarshantn/py3
-  name: sudarshantn/py3
-spec: 
+metadata:
+    name: py
+spec:
   replicas: 3
-  selector: 
-    matchLabels: 
-      app: sudarshantn/py3
-  template: 
-    metadata: 
-      labels: 
-        app: sudarshantn/py3
-    spec: 
-      containers: 
+  template:
+    metadata:
+      labels:
+        app: py
+    spec:
+      containers:
         - image: sudarshantn/py3
-          name: sudarshantn/py3
-          command: ['tail -F sleep infinity']
-          ports: 
+          name: py
+          command: ["tail -f /dev/null"]
+          ports:
             - containerPort: 80
         - image: mongo:4.0.0
           name: mongo4
