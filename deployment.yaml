@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: sudarshantn/py3
+  name: sudarshantn/py3
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels: 
+      app: sudarshantn/py3
+  template: 
+    metadata: 
+      labels: 
+        app: sudarshantn/py3
+    spec: 
+      containers: 
+        - image: sudarshantn/py3
+          name: sudarshantn/py3
+          command: ['tail -F sleep infinity']
+          ports: 
+            - containerPort: 80
+        - image: mongo:4.0.0
+          name: mongo4
+          ports:
+            - containerPort: 27017
