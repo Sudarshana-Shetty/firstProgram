@@ -1,16 +1,7 @@
 class SubClass:
     def __init__(self, db):
         self.db = db
-# >>>>>> --- User Menu --- <<<<<<    
-    def userMenu(self):    
-        print("---Welcome to User Data Collections Menu---")
-        print("Please select any one of the below option: ")
-        print("1. Inser user data")
-        print("2. Update existing data")
-        print("3. Delete existing record")
-        print("4. Exit")
-        choice = int(input("Please enter your choice: ")) # Accepting input from user
-        
+
 # >>>>>> --- Accepting user name and address here --- <<<<<<
     def userInput(self):
         userInput = {}
@@ -23,7 +14,7 @@ class SubClass:
 # >>>>>> --- Checking for user if exists --- <<<<<<                    
     def findUser(self, uInput):
         count = self.db.UserCollections.count()
-        if (count == 0):
+        if (int(count) == 0):
             return 0
         else:
             uCollections = self.db.UserCollections.find({'Name': uInput['Name']})
@@ -50,6 +41,7 @@ class SubClass:
         uCollections = self.db.UserCollections.find()
         for allrecord in uCollections:
             print(allrecord)
+        print('\n\n\n')
     
 
 # >>>>>> --- Update the user Address --- <<<<<<
@@ -67,7 +59,8 @@ class SubClass:
             )
         uCollections = self.db.UserCollections.find({'Name': uInput['Name']})
         for uInput in uCollections:
-            print('Record updated successfully!!', uInput)
+            print('Record updated successfully!!\n', uInput)
+        print('\n')
 
 # >>>>>> --- Delete User Details --- <<<<<<
     def deleteUser(self, uInput):
