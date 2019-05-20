@@ -1,7 +1,16 @@
 class SubClass:
     def __init__(self, db):
         self.db = db
-
+# >>>>>> --- User Menu --- <<<<<<    
+    def userMenu(self):    
+        print("---Welcome to User Data Collections Menu---")
+        print("Please select any one of the below option: ")
+        print("1. Inser user data")
+        print("2. Update existing data")
+        print("3. Delete existing record")
+        print("4. Exit")
+        choice = int(input("Please enter your choice: ")) # Accepting input from user
+        
 # >>>>>> --- Accepting user name and address here --- <<<<<<
     def userInput(self):
         userInput = {}
