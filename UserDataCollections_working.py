@@ -5,15 +5,8 @@ client = pymongo.MongoClient('mongodb://mongo4:27017/')
 db = client['UserDataDB'] # Creating new Data base 
 subobj = SubClass(db)
           
-print("---Welcome to User Data Collections Menu---")
-print("Please select any one of the below option: ")
-print("1. Inser user data")
-print("2. Update existing data")
-print("3. Delete existing record")
-print("4. Exit")
-try:
-    choice = int(input("Please enter your choice: ")) # Accepting input from user
-
+subobj.userMenu()
+try:    
     if (choice == 1):
         uInput = subobj.userInput()
         print("You have entered the following details: \n", uInput)     
@@ -26,6 +19,7 @@ try:
         else:
             subobj.insertUser(uInput)
             subobj.displayAllUser()
+            subobj.userMenu()
 
     if (choice == 2):
         uInput = {}
@@ -43,6 +37,7 @@ try:
             uInput['Address'] = uaddress
             subobj.updateUser(uInput)
             subobj.displayAllUser()
+            subobj.userMenu()
 
     if(choice == 3):
         uInput = {}
@@ -56,6 +51,7 @@ try:
         else:
             subobj.deleteUser(uInput)
             subobj.displayAllUser()
+            subobj.userMenu()
             
     if (choice == 4):
         exit
@@ -64,6 +60,4 @@ try:
 except ValueError:
     print("Invalid Input!!! Strings are not allowed")
 except EOFError:
-    print("An error occured while connecting DB")      
-# finally:
-#     print('An error occured while running the program please try again!')  
+    print("An error occured while connecting DB") 
