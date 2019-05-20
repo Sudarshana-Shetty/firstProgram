@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
     name: py
 spec:
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -12,7 +12,7 @@ spec:
       containers:
         - image: sudarshantn/py3
           name: py
-          #command: ["tail -f /dev/null"]
+          command: ["tail", "-f" ,"/dev/null"]
           ports:
             - containerPort: 80
         - image: mongo:4.0.0
